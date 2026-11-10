@@ -1,0 +1,14 @@
+name: 🔍 Check root/public sync
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Root site and public/ must match
+        run: bash scripts/check-sync.sh
